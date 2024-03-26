@@ -10,3 +10,9 @@ function myNewFunction() {
         mystring += "on second thought I don't have anything to say"
         document.getElementById("Concatenate").innerHTML = mystring;
 }
+
+function changeText() {
+    var myString = "Hello my friend"
+    document.getElementById("header").innerHTML = myString
+}
+
