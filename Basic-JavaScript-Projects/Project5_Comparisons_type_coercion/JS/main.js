@@ -89,3 +89,11 @@ function not_function() {
 function is_to_function() {
     document.getElementById("is_to").innerHTML = !(20 < 1);
 }
+
+//Learning Ternary Operators. Evaluating if someone can drive or not. 
+function driver_eval_function() {
+    var age, driver; 
+    age = document.getElementById("age").value;
+    driver = (age >= 16) ? "You can drive ":" You can not drive ";
+    document.getElementById("licensed").innerHTML = driver + " the car";
+}
