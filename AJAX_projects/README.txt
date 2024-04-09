@@ -1,0 +1,1 @@
+I dropped these files onto a local XAMPP Apache webserver to run my AJAX successfully, th htdocs file to be exact. 
