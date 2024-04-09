@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML5 Boilerplate</title>
+  <link rel="stylesheet" href="./ajax.css">
+</head>
+
+<body>
+  <h1>Main Page</h1>
+
+  <!--Successfully execute the onreadystatechange Property in the browser.-->
+  
+    <div class="button_container" id="Container1">
+        <div class="btn1" id="btn1">
+            <button id="theButton" onclick="getContent()">Submit</button>
+        </div>
+    </div>
+
+  <script>
+
+    var url = "127.0.0.1:8080/ajaxContent.html"
+    var xhr = new XMLHttpRequest(); 
+    xhr.open('GET', url, true)
+
+    xhr.onreadystatechange = function(env) {
+        //2 - request sent, 3 - something back, 4 - full response
+        console.log(xhr.readyState);
+        if(xhr.readyState == 4 ){
+            switch (xhr.status){
+                case 200:
+                case 304:
+                    console.log('Ok or Not Modified (cached)', xhr.status);
+                    break;
+                case 201:
+                    console.log('Created', xhr.status);
+                    break;
+                case 403:
+                case 401:
+                    console.log('Not Authorized or Forbidden', xhr.status);
+                    break; 
+                case 404:
+                    console.log('Not Found', xhr.status);
+                    break;
+                case 500:
+                    console.log('Server Side Error', xhr.status);
+                    break;
+                default:
+                    console.log('Some other code', xhr.status, xhr.status);
+            }
+            
+            document.getElementById('btn1').innerHTML = xhr.responseText;
+        }
+    };
+
+
+    xhr.onerror = function(err) {
+        console.warn(err);
+    };
+    
+    function getContent() {
+        xhr.send();
+        document.getElementById('theButton').style.display = 'none';
+    }
+    
+
+
+
+  </script>
+</body>
+
+</html>
